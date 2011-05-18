@@ -1,5 +1,5 @@
 import sys
-from grid import Grid
+from puzzle import *
 
 size = 5
 
@@ -19,7 +19,7 @@ def generate(count=1, short=None):
         print randomGrid(short)
 
 def randomGrid(short=False):
-    grid = Grid(size).genRandom()
+    grid = RandomPuzzle(size)
     if short:
         return grid.export()
     else:
@@ -42,4 +42,3 @@ def handleArguments(args):
         generate(count, short)
 
 handleArguments(sys.argv[1:])
-#handleArguments(['gen'])
