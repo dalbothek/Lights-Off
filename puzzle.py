@@ -69,6 +69,15 @@ class Puzzle:
             export += str(self.par())
         return export
 
+    def int(self, par=True):
+        grid = self.state.int()
+        if not par:
+            return grid
+        else:
+            par = self.par()
+            return (grid << 5) | par
+            
+
         
     def display(self, par=True):
         display = self.state.display()

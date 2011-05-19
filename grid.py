@@ -42,6 +42,15 @@ class Grid:
                 string += str(self.get(x,y))
         return string
 
+    def int(self):
+        assert self.size == 5
+        grid = 0b0
+        for x in range(self.size):
+            for y in range(self.size):
+                grid = (grid << 1) | self.get(x,y)
+        return grid
+        
+
     def toggle(self, x, y):
         if x >= 0 and x < self.size and y >= 0 and y < self.size:
             self.set(x,y, self.get(x,y) ^ 1)
