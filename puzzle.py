@@ -75,7 +75,7 @@ class Puzzle:
             return grid
         else:
             par = self.par()
-            return (grid << 5) | par
+            return grid | (par << 25)
             
 
         
