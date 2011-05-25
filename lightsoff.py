@@ -3,20 +3,41 @@
 import sys, binascii
 from puzzle import *
 from scheduler import *
+from terminal import *
 
 size = 5
 
 def showHelp():
-    print 'Usage: lightsoff command [options]'
-    print
-    print 'Commands:'
-    print '\tgen [-s|-l|-b] [-o file] [-t threads] [count] - Generates puzzles'
-    print '\t\t-s: short form (one line per puzzle)'
-    print '\t\t-l: long form'
-    print '\t\t-b: binary form'
-    print '\t\t-o file: save output in file'
-    print '\t\t-t threads: number of threads (defaults to number of CPU cores)'
-    print '\t\tcount: number of puzzles'
+    term = TerminalController()
+    helptext = '''
+${BOLD}NAME${NORMAL}
+    lightsoff - level generator
+    
+${BOLD}SYNOPSIS${NORMAL}
+    lightsoff command [options]
+    
+${BOLD}COMMANDS${NORMAL}
+    gen [-s|-l|-b] [-o ${UNDERLINE}file${NORMAL}] [-t ${UNDERLINE}threads${NORMAL}] [${UNDERLINE}count${NORMAL}] - Generates puzzles
+
+${BOLD}OPTIONS${NORMAL}
+        -s
+            short form (one line per puzzle)
+        -l
+            long form
+        -b
+            binary form${NORMAL}
+        -o ${UNDERLINE}files${NORMAL}
+            save output in file
+        -t ${UNDERLINE}hreadss${NORMAL}
+            number of threads (defaults to number of CPU cores)
+        ${UNDERLINE}count${NORMAL}
+            number of puzzles
+'''
+    if term.BOLD and term.UNDERLINE:
+        print term.render(helptext)
+    else:
+        print term.strip(helptext)
+    
 
 def generate(count=1, form=None, path=None, threads=None):
     if form == None:
