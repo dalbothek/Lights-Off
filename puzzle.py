@@ -67,7 +67,7 @@ class Puzzle:
         export = self.state.string()
         if par:
             export += str(self.par())
-        return export
+        return export + "\n"
 
     def int(self, par=True):
         grid = self.state.int()
